@@ -94,9 +94,22 @@ namespace ChallengeStudentCourses
              * new requirement.  Give each Student a grade in each Course they
              * are enrolled in (make up the data).  Then, for each student, 
              * print out each Course they are enrolled in and their grade.
-             */ 
+             */
 
+            Student student = new Student();
+            student.StudentId = 1098537;
+            student.Name = "James Buchanan";
+            student.Enrollments = new List<Enrollment>()
+            {
+                new Enrollment { grade = 95, course = new Course { CourseId = 1, Name = "Psychology 101" } },
+                new Enrollment { grade = 89, course = new Course { CourseId = 1, Name = "Modern Theology and Heirarchal Structures" } },
+            };
 
+            resultLabel.Text = String.Format("#{0} - {1}<br/>", student.StudentId, student.Name);
+            foreach (var enrollment in student.Enrollments)
+            {
+                resultLabel.Text += String.Format("<br/>Class: {0} - Grade: {1}", enrollment.course.Name, enrollment.grade);
+            }
 
 
         }
